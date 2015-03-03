@@ -20,16 +20,16 @@ class AwesomeSauce extends Transformable {
 
   	stroke(255);
     
-    beginShape(LINES);
     for (int i = 0; i < _rays; i ++) {
+    beginShape(LINES);
     	
     	rotate(_angle);		
     	vertex(0, 0);
     	vertex(_lineLength, _lineLength);
+    endShape();
     }
     println("AwesomeSauce drawn");
     println(_angle);
-    endShape();
     
   }
   
