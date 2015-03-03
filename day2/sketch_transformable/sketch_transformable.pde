@@ -1,6 +1,8 @@
 final int CANVAS_WIDTH = 500;
 final int CANVAS_HEIGHT = 500;
 
+int _numberRays = 11;
+
 Transformable t;
 
 ArrayList<Transformable> elements = new ArrayList<Transformable>();
@@ -46,7 +48,7 @@ void mousePressed(){
 		t = new Triangle(mouseX, mouseY, 25);
 		println("Triangle added");
 	} else {
-		t = new AwesomeSauce(mouseX, mouseY, 25, 5);
+		t = new AwesomeSauce(mouseX, mouseY, 25);
 		println("AwesomeSauce added");
 	}
 	
