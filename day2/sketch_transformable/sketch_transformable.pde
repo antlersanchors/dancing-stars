@@ -51,8 +51,11 @@ void mousePressed(){
 
 void mouseDragged() {
 
-	if(t.inside(mouseX, mouseY)) {
-		t.translate_to(mouseX, mouseY);
+	for (int i = 0; i < elements.size(); i++) {
+		Transformable t = elements.get(i);
+		if(t.inside(mouseX, mouseY)) {
+			t.translate_to(mouseX, mouseY);
+		}
 	}
 }
 
