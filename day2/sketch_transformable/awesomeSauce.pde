@@ -10,21 +10,26 @@ class AwesomeSauce extends Transformable {
     
     _radius = r;
     _rays = s;
-    _angle = TWO_PI / _rays;
-    
-    // _lineLength = int(random(5, 35););
+    _angle = 360 / _rays;
+
+    _lineLength = int(random(5, 35));
+
   }  
   
   public void draw_shape(){
-    
-    for (int i = 0; i < TWO_PI; i += _angle) {
-    	float sx = 0 + cos(i) * _radius;
-    	float sy = 0 + sin(i) * _radius;
 
-		stroke(255);
-    	line(0, 0 , sx, sy);
+  	stroke(255);
+    
+    beginShape(LINES);
+    for (int i = 0; i < _rays; i ++) {
+    	
+    	rotate(_angle);		
+    	vertex(0, 0);
+    	vertex(_lineLength, _lineLength);
     }
     println("AwesomeSauce drawn");
+    println(_angle);
+    endShape();
     
   }
   

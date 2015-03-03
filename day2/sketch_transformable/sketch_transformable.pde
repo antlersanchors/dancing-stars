@@ -35,7 +35,7 @@ void draw() {
 
 void mousePressed(){
 
-	float r = random(0,3);
+	float r = 4;
 	// Transformable t;
 
 	if(r < 1) {
@@ -44,8 +44,9 @@ void mousePressed(){
 		t = new Square(mouseX, mouseY, 35, 35);
 	} else if(r < 3) {
 		t = new Triangle(mouseX, mouseY, 25);
+		println("Triangle added");
 	} else {
-		t = new AwesomeSauce(mouseX, mouseY, 25, 10);
+		t = new AwesomeSauce(mouseX, mouseY, 25, 5);
 		println("AwesomeSauce added");
 	}
 	
