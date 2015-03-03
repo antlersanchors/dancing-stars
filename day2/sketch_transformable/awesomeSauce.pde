@@ -45,8 +45,6 @@ class AwesomeSauce extends Transformable {
 			_increasing(i) = false;
 		}
 
-	}
-
     beginShape(LINES);
     	
     	rotate(_angle);		
@@ -54,7 +52,9 @@ class AwesomeSauce extends Transformable {
     	vertex(_newVector.x, _newVector.y);
 
     endShape();
-    }
+  }
+
+}
   
   public boolean inside(int mx, int my) {    
     if(dist(mx, my, _position.x, _position.y) < _radius) return true;
