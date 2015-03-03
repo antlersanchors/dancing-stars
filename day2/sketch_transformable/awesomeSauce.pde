@@ -5,19 +5,22 @@ class AwesomeSauce extends Transformable {
 	int _rays = _numberRays;
 	float _angle;
 	PVector _increment = new PVector(1, 1);
+
+	ArrayList<PVector> _vectors;
+	ArrayList<Boolean> _increasing;
   
   public AwesomeSauce(int x, int y, int r) {
     super(x, y);
 
-    ArrayList<PVector> _vectors = new ArrayList<PVector>(_numberRays);
-    ArrayList<boolean> _increasing = new ArrayList<boolean>(_numberRays);
+    _vectors = new ArrayList<PVector>(_numberRays);
+    _increasing = new ArrayList<Boolean>(_numberRays);
     
     _radius = r;
     _angle = 360 / _rays;
 
     _lineLength = random(10, 35);
     _vectors.add(new PVector(_lineLength, _lineLength));
-    _increasing.add(new boolean(true));
+    _increasing.add(new Boolean(true));
 }
   
   public void draw_shape(){
@@ -28,18 +31,18 @@ class AwesomeSauce extends Transformable {
 
     	PVector _startingVector;
     	PVector _newVector;
-    	boolean _checkDirection;
+    	Boolean _checkDirection;
 
     	_checkDirection = _increasing.get(i);
     	_startingVector = _vectors.get(i);
 
-    	if(_increasing == true && _startingVector < 35) {
+    	if(_checkDirection == true && _startingVector.x < 35 ) {
     		_newVector = _startingVector + _increment;
     	} else if (_startingVector < 6) {
-    		_increasing = true;
+    		_checkDirection = true;
     		_newVector = _startingVector + _increment;
 		} else {
-			_increasing = false;
+			_increasing(i) = false;
 		}
 
 	}
@@ -52,8 +55,6 @@ class AwesomeSauce extends Transformable {
 
     endShape();
     }
-    
-  }
   
   public boolean inside(int mx, int my) {    
     if(dist(mx, my, _position.x, _position.y) < _radius) return true;
