@@ -13,8 +13,12 @@ void setup() {
 void draw() {
   background(23, 68, 250);
 
+  if(frameCount % 5 == 0) {
+
   float r = radians(3);
   t.rotate_increment(r);
+
+}
 
   stroke(255);
   noFill();
