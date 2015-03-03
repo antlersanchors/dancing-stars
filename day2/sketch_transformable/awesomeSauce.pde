@@ -1,41 +1,54 @@
 class AwesomeSauce extends Transformable {
 
 	int _radius;
-	int _lineLength;
+	float _lineLength;
 	int _rays = _numberRays;
 	float _angle;
-	PVector _increment;
+	PVector _increment = new PVector(1, 1);
   
-  public AwesomeSauce(int x, int y, int r, int s) {
+  public AwesomeSauce(int x, int y, int r) {
     super(x, y);
+
+    ArrayList<PVector> _vectors = new ArrayList<PVector>(_numberRays);
+    ArrayList<boolean> _increasing = new ArrayList<boolean>(_numberRays);
     
     _radius = r;
-    _rays = s;
     _angle = 360 / _rays;
 
-    _lineLength = int(random(10, 35));
+    _lineLength = random(10, 35);
     _vectors.add(new PVector(_lineLength, _lineLength));
+    _increasing.add(new boolean(true));
 }
   
   public void draw_shape(){
 
   	stroke(255);
-
     
     for (int i = 0; i < _rays; i ++) {
 
     	PVector _startingVector;
     	PVector _newVector;
+    	boolean _checkDirection;
 
+    	_checkDirection = _increasing.get(i);
     	_startingVector = _vectors.get(i);
 
-    beginShape(LINES);
+    	if(_increasing == true && _startingVector < 35) {
+    		_newVector = _startingVector + _increment;
+    	} else if (_startingVector < 6) {
+    		_increasing = true;
+    		_newVector = _startingVector + _increment;
+		} else {
+			_increasing = false;
+		}
 
-    	 
+	}
+
+    beginShape(LINES);
     	
     	rotate(_angle);		
     	vertex(6, 6);
-    	vertex(_lineLength, _lineLength);
+    	vertex(_newVector.x, _newVector.y);
 
     endShape();
     }
