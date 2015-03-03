@@ -1,0 +1,1 @@
+Just some dancing star/firework objects, for to learn Object Oriented Programming. :)
