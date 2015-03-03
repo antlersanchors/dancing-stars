@@ -4,8 +4,9 @@ final int CANVAS_HEIGHT = 500;
 Transformable t;
 
 void setup() {  
-  size(CANVAS_WIDTH, CANVAS_HEIGHT);
+  size(CANVAS_WIDTH, CANVAS_HEIGHT, OPENGL);
   background(23, 68, 250);
+	smooth();
 
   t = new Triangle(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2, 50);
 }
@@ -13,9 +14,9 @@ void setup() {
 void draw() {
   background(23, 68, 250);
 
-  if(frameCount % 5 == 0) {
+  if(frameCount % 2 == 0) {
 
-  float r = radians(3);
+  float r = radians(1);
   t.rotate_increment(r);
 
 }
@@ -25,6 +26,10 @@ void draw() {
   t.display();
 }
 
-void mousePressed() {
+void mouseDragged() {
+
+	if(t.inside(mouseX, mouseY)) {
+		t.translate_to(mouseX, mouseY);
+	}
 }
 
