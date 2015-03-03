@@ -2,3 +2,7 @@
 *.class
 
 *.java
+
+sketch.properties
+
+build-tmp
