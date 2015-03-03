@@ -1,10 +1,3 @@
-class Ray {
-
-  boolean _increasing;
-  PVector _vector;
-
-};
-
 class AwesomeSauce extends Transformable {
 
 	int _radius;
@@ -12,8 +5,6 @@ class AwesomeSauce extends Transformable {
 	int _rays = _numberRays;
 	float _angle;
 	PVector _increment = new PVector(1, 1);
-
-  ArrayList<Ray> _rays;
 
 	ArrayList<PVector> _vectors;
 	ArrayList<Boolean> _increasing;
@@ -27,14 +18,10 @@ class AwesomeSauce extends Transformable {
     _radius = r;
     _angle = 360 / _rays;
 
-    for (int i = 0; i < _numberRays; i++){
-     
-      _lineLength = random(10, 35);
-      _vectors.add(new PVector(_lineLength, _lineLength));
-      _increasing.add(new Boolean(true));
-    
-    }
-  }
+    _lineLength = random(10, 35);
+    _vectors.add(new PVector(_lineLength, _lineLength));
+    _increasing.add(new Boolean(true));
+}
   
   public void draw_shape(){
 
@@ -49,39 +36,25 @@ class AwesomeSauce extends Transformable {
     	_checkDirection = _increasing.get(i);
     	_startingVector = _vectors.get(i);
 
-      Ray r = _rays.get(i);
-
-      r._increasing = false;
-
-      println(_checkDirection);
-
-    	if( _checkDirection.booleanValue() == true && _startingVector.x < 36 ) {
-        _startingVector.x += _increment.x;
-        _startingVector.y += _increment.y;
-    	} else if( !_checkDirection.booleanValue() && _startingVector.x > 6 ) {
-        _startingVector.x -= _increment.x;
-        _startingVector.y -= _increment.y;   
-        println("....");     
-      } else if(_startingVector.x >= 35) {
-        _checkDirection = false;
-        println("---");
-      } else if (_startingVector.x <= 6) {
+    	if(_checkDirection == true && _startingVector.x < 35 ) {
+    		_newVector = _startingVector + _increment;
+    	} else if (_startingVector < 6) {
     		_checkDirection = true;
-  		} 
-
-      println(_checkDirection);
+    		_newVector = _startingVector + _increment;
+		} else {
+			_increasing(i) = false;
+		}
 
     beginShape(LINES);
     	
     	rotate(_angle);		
     	vertex(6, 6);
-    	vertex(_startingVector.x, _startingVector.y);
+    	vertex(_newVector.x, _newVector.y);
 
     endShape();
-    }
   }
 
-
+}
   
   public boolean inside(int mx, int my) {    
     if(dist(mx, my, _position.x, _position.y) < _radius) return true;
