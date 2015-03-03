@@ -1,1 +1,1 @@
-Just some dancing star/firework objects, for to learn Object Oriented Programming. :)
+Just some dancing star/firework objects, for to learn Object Oriented Programming. :)  Thanks to Sergey and David for the heavy troubleshooting.
