@@ -1,9 +1,3 @@
-class Ray {
-
-  boolean _increasing;
-  PVector _vector;
-
-};
 
 class AwesomeSauce extends Transformable {
 
@@ -13,7 +7,6 @@ class AwesomeSauce extends Transformable {
 	float _angle;
 	PVector _increment = new PVector(1, 1);
 
-  ArrayList<Ray> _rays;
 
 	ArrayList<PVector> _vectors;
 	ArrayList<Boolean> _increasing;
@@ -49,24 +42,26 @@ class AwesomeSauce extends Transformable {
     	_checkDirection = _increasing.get(i);
     	_startingVector = _vectors.get(i);
 
-      Ray r = _rays.get(i);
-
-      r._increasing = false;
-
       println(_checkDirection);
 
-    	if( _checkDirection.booleanValue() == true && _startingVector.x < 36 ) {
+    	if( _checkDirection.booleanValue() && _startingVector.x < 36 ) {
         _startingVector.x += _increment.x;
         _startingVector.y += _increment.y;
+
     	} else if( !_checkDirection.booleanValue() && _startingVector.x > 6 ) {
         _startingVector.x -= _increment.x;
         _startingVector.y -= _increment.y;   
         println("....");     
-      } else if(_startingVector.x >= 35) {
-        _checkDirection = false;
-        println("---");
+
+      } else if(_startingVector.x >= 34) {
+        _increasing.remove(i);
+        _increasing.add(i, new Boolean(false));
+        
+        println(_checkDirection);
+
       } else if (_startingVector.x <= 6) {
-    		_checkDirection = true;
+        _increasing.remove(i);
+        _increasing.add(i, new Boolean(true));
   		} 
 
       println(_checkDirection);
