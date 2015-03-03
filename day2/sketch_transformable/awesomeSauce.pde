@@ -2,8 +2,9 @@ class AwesomeSauce extends Transformable {
 
 	int _radius;
 	int _lineLength;
-	int _rays;
+	int _rays = _numberRays;
 	float _angle;
+	PVector _increment;
   
   public AwesomeSauce(int x, int y, int r, int s) {
     super(x, y);
@@ -12,24 +13,32 @@ class AwesomeSauce extends Transformable {
     _rays = s;
     _angle = 360 / _rays;
 
-    _lineLength = int(random(5, 35));
-
-  }  
+    _lineLength = int(random(10, 35));
+    _vectors.add(new PVector(_lineLength, _lineLength));
+}
   
   public void draw_shape(){
 
   	stroke(255);
+
     
     for (int i = 0; i < _rays; i ++) {
+
+    	PVector _startingVector;
+    	PVector _newVector;
+
+    	_startingVector = _vectors.get(i);
+
     beginShape(LINES);
+
+    	 
     	
     	rotate(_angle);		
-    	vertex(0, 0);
+    	vertex(6, 6);
     	vertex(_lineLength, _lineLength);
+
     endShape();
     }
-    println("AwesomeSauce drawn");
-    println(_angle);
     
   }
   

@@ -1,9 +1,12 @@
 final int CANVAS_WIDTH = 500;
 final int CANVAS_HEIGHT = 500;
 
+int _numberRays = 10;
+
 Transformable t;
 
 ArrayList<Transformable> elements = new ArrayList<Transformable>();
+ArrayList<PVector> _vectors = new ArrayList<PVector>(_numberRays);
 
 void setup() {  
   size(CANVAS_WIDTH, CANVAS_HEIGHT, OPENGL);
@@ -46,7 +49,7 @@ void mousePressed(){
 		t = new Triangle(mouseX, mouseY, 25);
 		println("Triangle added");
 	} else {
-		t = new AwesomeSauce(mouseX, mouseY, 25, 5);
+		t = new AwesomeSauce(mouseX, mouseY, 25);
 		println("AwesomeSauce added");
 	}
 	
