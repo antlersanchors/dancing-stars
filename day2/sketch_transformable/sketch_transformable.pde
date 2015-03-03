@@ -36,17 +36,21 @@ void draw() {
 void mousePressed(){
 
 	float r = random(0,3);
-	Transformable t;
+	// Transformable t;
 
 	if(r < 1) {
 		t = new Circle(mouseX, mouseY, 25);
 	} else if(r < 2) {
 		t = new Square(mouseX, mouseY, 35, 35);
-	} else {
+	} else if(r < 3) {
 		t = new Triangle(mouseX, mouseY, 25);
+	} else {
+		t = new AwesomeSauce(mouseX, mouseY, 25, 10);
+		println("AwesomeSauce added");
 	}
 	
 	elements.add(t);
+	
 }
 
 void mouseDragged() {
